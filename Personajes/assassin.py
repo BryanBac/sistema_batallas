@@ -12,7 +12,7 @@ class Assassin(Personaje):
         self.items_disponibles: int = 3
 
     def atacar(self):
-        pass
+        return self.ATK
 
     def usar_item(self):
         if self.items_disponibles > 0:
@@ -21,17 +21,20 @@ class Assassin(Personaje):
         else:
             return False
 
-    def recibir_danio(self):
-        pass
+    def recibir_danio(self, daño: int):
+        daño_total: int
+        daño_total = daño - self.DEF
 
-    def get_atk(self):
-        pass
+        if daño_total > 0:
+            self.LP -= daño_total
+        else:
+            print("El personaje tieme mejor defensa que su ataque")
 
     def get_spd(self):
-        pass
+        return self.SPD
 
     def get_hp(self):
-        pass
+        return self.LP
 
     def get_def(self):
-        pass
+        return self.DEF
