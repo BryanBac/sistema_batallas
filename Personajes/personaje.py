@@ -12,11 +12,7 @@ class Personaje(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
-    def recibir_danio(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_atk(self):
+    def recibir_danio(self, daño: int):
         raise NotImplementedError
 
     @abstractmethod
