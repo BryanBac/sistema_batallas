@@ -5,16 +5,21 @@ class Lancer(Personaje):
 
     def __init__(self):
         self.LP: int = 100
-        self.ATK: int = 15
-        self.DEF: int = 15
+        self.ATK: int = 30
+        self.DEF: int = 12
         self.SPD: int = 30
         self.estado: bool = False
+        self.items_disponibles: int = 3
 
     def atacar(self):
         pass
 
     def usar_item(self):
-        pass
+        if self.items_disponibles > 0:
+            self.items_disponibles -= 1
+            return True
+        else:
+            return False
 
     def recibir_danio(self):
         pass
