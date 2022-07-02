@@ -59,12 +59,12 @@ while opcion != 2:
             if batalla == 1:
                 if turno == 1:
                     if p1.items_disponibles == 3:
-                        p2.recibir_danio(p1.atacar())
+                        p2.recibir_ataque(p1.atacar())
                     else:
                         p2.recibir_ataque(p1.atacar())
                 if turno == 2:
                     if p1.items_disponibles == 3:
-                        p1.recibir_danio(p2.atacar())
+                        p1.recibir_ataque(p2.atacar())
                     else:
                         p1.recibir_ataque(p2.atacar())
                 if p1.get_hp() <= 0:
