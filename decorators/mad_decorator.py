@@ -1,10 +1,11 @@
 from decorators.PersonajeDecorator import PersonajeDecorator
+from Personajes.personaje import Personaje
 import random
 
 
 class MadDecorator(PersonajeDecorator):
-    def __init__(self):
-        super.__init__()
+    def __init__(self, tipo_personaje: Personaje):
+        super(MadDecorator, self).__init__(tipo_personaje)
         self.personaje_decorado.ATK = self.personaje_decorado.ATK * 2
         nueva_defensa = self.personaje_decorado.DEF % 2
         self.personaje_decorado.DEF = self.personaje_decorado.DEF / 2 + nueva_defensa
@@ -23,4 +24,8 @@ class MadDecorator(PersonajeDecorator):
                 self.guts_disponibles -= 1
 
     def usar_item(self):
-        self.personaje_decorado.usar_item()
+        if self.personaje_decorado.usar_item():
+            self.items_disponibles -= 1
+
+    def get_hp(self):
+        return self.personaje_decorado.get_hp()

@@ -1,10 +1,11 @@
 from decorators.PersonajeDecorator import PersonajeDecorator
+from Personajes.personaje import Personaje
 import random
 
 
 class MaxDecorator(PersonajeDecorator):
-    def __init__(self):
-        super.__init__()
+    def __init__(self, tipo_personaje: Personaje):
+        super(MaxDecorator, self).__init__(tipo_personaje)
         self.personaje_decorado.LP = 100
         self.personaje_decorado.ATK = self.personaje_decorado.ATK - 5
 
@@ -18,4 +19,8 @@ class MaxDecorator(PersonajeDecorator):
             self.personaje_decorado.LP = self.personaje_decorado.LP - (daño/2)
 
     def usar_item(self):
-        self.personaje_decorado.usar_item()
+        if self.personaje_decorado.usar_item():
+            self.items_disponibles -= 1
+
+    def get_hp(self):
+        return self.personaje_decorado.get_hp()

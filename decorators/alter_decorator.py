@@ -1,13 +1,14 @@
 from decorators.PersonajeDecorator import PersonajeDecorator
+from Personajes.personaje import Personaje
 import random
 
 
 class AlterDecorator(PersonajeDecorator):
-    def __init__(self):
-        super.__init__()
-        self.personaje_decorado.ATK = self.personaje_decorado + 8
+    def __init__(self, tipo_personaje: Personaje):
+        super(AlterDecorator, self).__init__(tipo_personaje)
+        self.personaje_decorado.ATK = self.personaje_decorado.ATK + 8
         self.personaje_decorado.SPD = self.personaje_decorado.SPD + 3
-        self.personaje_decorado.DEF = self.personaje_decorado.DEf - 2
+        self.personaje_decorado.DEF = self.personaje_decorado.DEF - 2
 
     def atacar(self):
         atacar_con_fuerza: int = random.randint(0, 1)
@@ -21,4 +22,8 @@ class AlterDecorator(PersonajeDecorator):
         self.personaje_decorado.LP -= daño
 
     def usar_item(self):
-        self.personaje_decorado.usar_item()
+        if self.personaje_decorado.usar_item():
+            self.items_disponibles -= 1
+
+    def get_hp(self):
+        return self.personaje_decorado.get_hp()

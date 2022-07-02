@@ -1,9 +1,10 @@
 from decorators.PersonajeDecorator import PersonajeDecorator
+from Personajes.personaje import Personaje
 
 
 class StunDecorator(PersonajeDecorator):
-    def __init__(self):
-        super.__init__()
+    def __init__(self, tipo_personaje: Personaje):
+        super(StunDecorator, self).__init__(tipo_personaje)
         self.personaje_decorado.estado = True
 
     def atacar(self):
@@ -18,4 +19,8 @@ class StunDecorator(PersonajeDecorator):
         self.personaje_decorado.LP -= daño
 
     def usar_item(self):
-        self.personaje_decorado.usar_item()
+        if self.personaje_decorado.usar_item():
+            self.items_disponibles -= 1
+
+    def get_hp(self):
+        return self.personaje_decorado.get_hp()
