@@ -21,10 +21,8 @@ class Saber(Personaje):
         else:
             return False
 
-    def recibir_danio(self, daño: int):
-        daño_total: int
-        daño_total = daño - self.DEF
-
+    def recibir_ataque(self, daño: int):
+        daño_total: int = daño - self.DEF
         if daño_total > 0:
             self.LP -= daño_total
         else:
